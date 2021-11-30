@@ -226,7 +226,7 @@ body {
 <body>
     <div class="chat_window">
         <div class="top_menu">
-            <div class="title">Chat v0.2.0</div>
+            <div class="title">Chat v0.2.1</div>
         </div>
         <ul class="messages">
             <?php 
