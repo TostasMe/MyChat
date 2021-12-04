@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Models\Messages;
 
 class ChatController extends BaseController
@@ -18,7 +19,7 @@ class ChatController extends BaseController
     {
         if(Auth::check())
         {
-            $messages = DB::select("SELECT * FROM messages ORDER BY id DESC");
+            $messages = Messages::all();
 
             return view('chat', [
                 'messages' => $messages
@@ -28,8 +29,16 @@ class ChatController extends BaseController
             return redirect('/login');
     }
 
-    public function add()
+    public function sendMessage(Request $request)
     {
-
+        DB::insert('INSERT INTO messages (email, message, date) VALUES (?, ?, CURRENT_TIMESTAMP())', 
+        [Auth::user()->email, $request['mess']]);
+    }
+    public function showMessages()
+    {
+        $messages = DB::select('SELECT * FROM messages WHERE date >= DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL -3 HOUR)');
+        return view('messages', [
+            'messages' => $messages
+        ]);
     }
 }

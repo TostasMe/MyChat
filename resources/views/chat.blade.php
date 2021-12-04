@@ -11,8 +11,8 @@ body {
 .chat_window {
   position: absolute;
   width: calc(100% - 20px);
-  max-width: 1000px;
-  height: 700px;
+  max-width: 1100px;
+  height: 800px;
   border-radius: 20px;
   background-color: #fff;
   left: 50%;
@@ -54,7 +54,60 @@ body {
 .top_menu .title {
   text-align: center;
   color: #bcbdc0;
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.bottom_wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #17212b;
+  padding: 21px 20px;
+  position: absolute;
+  bottom: 0;
+}
+.bottom_wrapper .message_input_wrapper {
+  display: inline-block;
+  height: 50px;
+  width: calc(100% - 160px);
+  position: relative;
+  padding: 0 20px;
+}
+.bottom_wrapper .message_input_wrapper .message_input {
+  height: 100%;
+  border: 2px solid #636363;
+  border-radius: 20px;
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  position: absolute;
+  outline-width: 0;
+  color: #CFD2E4;
+  background-color: #17212b;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 18px;
+}
+.bottom_wrapper .send_message {
+  width: 140px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #17212b;
+  border: 2px solid #636363;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+  float: right;
+}
+.bottom_wrapper .send_message:hover {
+  color: #fff;
+  background-color: #4c9ce2;
+}
+.bottom_wrapper .send_message .text {
+  font-size: 18px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
 }
 
 .messages {
@@ -62,7 +115,7 @@ body {
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 550px;
+  height: 850px;
   overflow-y: auto;
   background-color: #0e1621;
 }
@@ -143,56 +196,14 @@ body {
   font-weight: 300;
 }
 
-.bottom_wrapper {
-  position: relative;
-  width: 100%;
-  background-color: #17212b;
-  padding: 21px 20px;
-  position: absolute;
-  bottom: 0;
-}
-.bottom_wrapper .message_input_wrapper {
-  display: inline-block;
-  height: 50px;
-  width: calc(100% - 160px);
-  position: relative;
-  padding: 0 20px;
-}
-.bottom_wrapper .message_input_wrapper .message_input {
-  height: 100%;
-  border: 2px solid #636363;
-  border-radius: 20px;
-  box-sizing: border-box;
-  width: calc(100% - 40px);
-  position: absolute;
-  outline-width: 0;
-  color: #CFD2E4;
-  background-color: #17212b;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.bottom_wrapper .send_message {
-  width: 140px;
-  height: 50px;
-  display: inline-block;
-  border-radius: 50px;
-  background-color: #17212b;
-  border: 2px solid #636363;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s linear;
-  text-align: center;
-  float: right;
-}
-.bottom_wrapper .send_message:hover {
-  color: #fff;
-  background-color: #4c9ce2;
-}
-.bottom_wrapper .send_message .text {
-  font-size: 18px;
-  font-weight: 300;
-  display: inline-block;
-  line-height: 48px;
+.message-view{
+    padding: 10px;
+    border: 1px solid #636363;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    background-color: #182533;
+    width: fit-content;
+    font-size: 18px;
 }
 
 .message_template {
@@ -206,6 +217,7 @@ body {
     margin-bottom: 10px;
     background-color: #182533;
     width: fit-content;
+    font-size: 18px;
 }
 
 .date-align{
@@ -214,6 +226,47 @@ body {
 
 .self-message{
     background-color: #2b5278;
+}
+
+.user-profile
+{
+  float: right;
+  margin-right: 30px;
+  border: 1px solid #696969;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.user-name
+{
+  margin-right: 10px;
+  float: right;
+}
+.sub-menu
+{
+  position: absolute;
+  z-index: 100;
+  background-color: #182533;
+  color: #e4ecf2;
+  left: 83%;
+  width: 180px;
+  list-style:none;
+  padding-right: 40px;
+  margin-bottom: 10px;
+  border: 2px solid #696969;
+  cursor: pointer;
+  display: none;
+}
+
+a{
+  text-decoration: none;
+  color: #e4ecf2;
+}
+
+.main-item:focus ~.sub-menu,
+.main-item:active ~.sub-menu,
+.sub-menu:hover
+{
+  display: block;
 }
 </style>
 
@@ -226,46 +279,78 @@ body {
 <body>
     <div class="chat_window">
         <div class="top_menu">
-            <div class="title">Chat v0.2.1</div>
+            <div class="title">
+              <span>Chat v1.0.0</span>
+              <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="https://favera.ru/img/2015/09/18/1056093_1442604300.jpg" width="40px" height="40px" alt="#"></a>
+              <span class="user-name">{{Illuminate\Support\Facades\Auth::user()->email}}</span>
+              <ul class="sub-menu">
+                <a href="/settings"><li>Settings</li></a>
+                <a href="/logout"><li>Logout</li></a>
+              </ul>
+            </div>
         </div>
-        <ul class="messages">
-            <?php 
-                foreach($messages as $m)
-                {
-            ?>
-                <div class="personal-message">
-                    <li>
-                        <div class="message-view">
-                            <span style="color:pink"><?=$m->email?></span><br>
-                            <span style="color:#e4ecf2"><?=$m->message?></span><br>
-                            <span class="date-align"><?=$m->date?></span>
-                        </div>
-                    </li>
-                </div>
-            <?php
-                }
-            ?>
+        <ul id="table" class="messages">
+
         </ul>
-        <div class="bottom_wrapper clearfix">
-            <div class="message_input_wrapper">
-                <input class="message_input" placeholder="Type your message here..." />
-            </div>
+        <form action="/" id="f">
+        {{ method_field('PUT') }}
+        {{ csrf_field() }}
+          <div class="bottom_wrapper clearfix">
+              <div class="message_input_wrapper">
+                  <input name="mess" id="message" class="message_input" placeholder="Type your message here..." />
+              </div>
 
-            <div class="send_message">
-                <div class="icon"></div>
-                <div class="text">send</div>
-            </div>
-        </div>
-    </div>
+              <button onclick="loadFromServer()" class="send_message" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5
+                 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0
+                  .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1
+                   .154.154l.215.338 7.494-7.494Z"/>
+              </svg>
+              </button>
+          </div>
+      </div>
 
-    <div class="message_template">
-        <li class="message">
-            <div class="avatar"></div>
-            <div class="text_wrapper">
-                <div class="text"></div>
-            </div>
-        </li>
-    </div>
-        <a href="/logout"><button>logout</button></a>
+      <div class="message_template">
+          <li class="message">
+              <div class="avatar"></div>
+              <div class="text_wrapper">
+                  <div class="text"></div>
+              </div>
+          </li>
+      </div>
+    </form>
 </body>
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  let elem
+    function loadFromServer() {
+        $.get( "/messages", function( data ) {
+            elem.html( data )
+        });
+    }
+    $(document).ajaxError(function(event,xhr,options,exc) {
+        alert("something went wrong")
+    })
+    function refreshTicker() {
+        loadFromServer()
+    }
+    $( document ).ready(function() {
+        elem = $( "#table" )
+        setInterval(loadFromServer, 2000)
+        loadFromServer();
+    });
+ 
+
+    $( "#f" ).submit(function( event ) {
+ 
+     event.preventDefault();
+     
+     $.post( "/", $( "#f" ).serialize() );
+     document.getElementById("message").value = "";
+     refreshTicker()
+    });
+
+</script>
