@@ -31,8 +31,8 @@ class ChatController extends BaseController
 
     public function sendMessage(Request $request)
     {
-        DB::insert('INSERT INTO messages (email, message, date) VALUES (?, ?, CURRENT_TIMESTAMP())', 
-        [Auth::user()->email, $request['mess']]);
+        DB::insert('INSERT INTO messages (email, message, image, name, date) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP())', 
+        [Auth::user()->email, $request['mess'], Auth::user()->image, Auth::user()->name]);
     }
     public function showMessages()
     {

@@ -46,7 +46,7 @@ class UserController extends BaseController
 
         if($request['password'] !== $request['repeat_password'])
         {
-            return back()->withErrors(['FormError' => 'passwords don\'t match']);
+            return back()->withErrors(['FormError' => 'Passwords didn\'t match']);
         }
 
         $pass = Crypt::encryptString($request['password']);
@@ -54,7 +54,8 @@ class UserController extends BaseController
         $user = [
             'email' => $request['email'],
             'password' => $pass,
-            'name' => "User"
+            'name' => "User",
+            'image' => "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
         ];
         
         $user = User::create($user);

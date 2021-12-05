@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
@@ -15,3 +17,4 @@ Route::get('/messages', [ChatController::class, 'showMessages']);
 Route::put('/', [ChatController::class, 'sendMessage']);
 Route::post('/signup', [UserController::class, 'signup']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/settings', [SettingsController::class, 'saveChanges']);

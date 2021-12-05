@@ -297,8 +297,8 @@ a{
     <div class="chat_window">
         <div class="top_menu">
             <div class="title">
-              <span>Chat v1.0.2</span>
-              <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" width="40px" height="40px" alt="#"></a>
+              <span>Chat v1.1.0</span>
+              <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="{{Illuminate\Support\Facades\Auth::user()->image}}" width="40px" height="40px" alt="#"></a>
               <span class="user-name">{{Illuminate\Support\Facades\Auth::user()->name}}</span>
               <ul class="sub-menu">
                 <a href="/settings"><li>Settings</li></a>
@@ -353,7 +353,7 @@ a{
     }
     $( document ).ready(function() {
         elem = $( "#table" )
-        setInterval(loadFromServer, 2000)
+        setInterval(loadFromServer, 500)
         loadFromServer();
     });
  
