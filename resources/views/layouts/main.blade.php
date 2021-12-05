@@ -47,6 +47,18 @@
           margin-top: 10px;
         }
 
+        .btn-else
+        {
+          color: #969696;
+          border: none;
+          text-decoration: none;
+        }
+
+        .btn-else:hover
+        {
+          color: #e4ecf2;
+        }
+
 
     </style>
     <link href="https://getbootstrap.com/docs/5.1/examples/sign-in/signin.css" rel="stylesheet">
@@ -81,6 +93,7 @@ body
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled)
 {
   margin-top: 20px;
+  margin-bottom: 30px;
   background-color: #17212b;
   border: 2px solid #696969;
   border-radius: 30px;

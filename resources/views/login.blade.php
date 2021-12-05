@@ -22,7 +22,7 @@
         @endif
         <button class="w-100 btn btn-lg btn-primary">Login</button>
     </form>
-    <a href="/signup"><button class="w-100 btn btn-lg btn-primary">Sign up</button></a>
+    <a href="/signup" class="btn-else">Didn't have an account? Sign Up here!</a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
 </main>
 @endsection

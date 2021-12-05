@@ -226,6 +226,7 @@ body {
 
 .self-message{
     background-color: #2b5278;
+    float: right;
 }
 
 .user-profile
@@ -280,16 +281,16 @@ a{
     <div class="chat_window">
         <div class="top_menu">
             <div class="title">
-              <span>Chat v1.0.0</span>
-              <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="https://favera.ru/img/2015/09/18/1056093_1442604300.jpg" width="40px" height="40px" alt="#"></a>
-              <span class="user-name">{{Illuminate\Support\Facades\Auth::user()->email}}</span>
+              <span>Chat v1.0.1</span>
+              <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" width="40px" height="40px" alt="#"></a>
+              <span class="user-name">{{Illuminate\Support\Facades\Auth::user()->name}}</span>
               <ul class="sub-menu">
                 <a href="/settings"><li>Settings</li></a>
                 <a href="/logout"><li>Logout</li></a>
               </ul>
             </div>
         </div>
-        <ul id="table" class="messages">
+        <ul id="table" class="messages personal-message">
 
         </ul>
         <form action="/" id="f">
@@ -331,9 +332,6 @@ a{
             elem.html( data )
         });
     }
-    $(document).ajaxError(function(event,xhr,options,exc) {
-        alert("something went wrong")
-    })
     function refreshTicker() {
         loadFromServer()
     }
