@@ -115,7 +115,7 @@ body {
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 850px;
+  height: 634px;
   overflow-y: auto;
   background-color: #0e1621;
 }
@@ -210,7 +210,8 @@ body {
   display: none;
 }
 
-.message-view{
+.message-view
+{
     padding: 10px;
     border: 1px solid #636363;
     border-radius: 20px;
@@ -218,15 +219,14 @@ body {
     background-color: #182533;
     width: fit-content;
     font-size: 18px;
-}
-
-.date-align{
-    color: #707e88;
+    margin-left: 0; 
+    margin-right: auto;
 }
 
 .self-message{
     background-color: #2b5278;
-    float: right;
+    margin-left: auto; 
+    margin-right: 0;
 }
 
 .user-profile
@@ -269,6 +269,22 @@ a{
 {
   display: block;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #182533;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #636363;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2b5278;
+}
 </style>
 
 <!DOCTYPE html>
@@ -281,7 +297,7 @@ a{
     <div class="chat_window">
         <div class="top_menu">
             <div class="title">
-              <span>Chat v1.0.1</span>
+              <span>Chat v1.0.2</span>
               <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" width="40px" height="40px" alt="#"></a>
               <span class="user-name">{{Illuminate\Support\Facades\Auth::user()->name}}</span>
               <ul class="sub-menu">
