@@ -22,7 +22,7 @@
         @endif
         <button class="w-100 btn btn-lg btn-primary">Login</button>
     </form>
-    <a href="/signup" class="btn-else">Didn't have an account? Sign Up here!</a>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <a href="/signup" class="btn-else">Don't have an account? Sign Up here!</a>
+    <p class="mt-5 mb-3 text-muted">&copy; Copyrighting by Tostas_Me 2021</p>
 </main>
 @endsection

@@ -46,7 +46,7 @@ class UserController extends BaseController
 
         if($request['password'] !== $request['repeat_password'])
         {
-            return back()->withErrors(['FormError' => 'Passwords didn\'t match']);
+            return back()->withErrors(['FormError' => 'Passwords don\'t match']);
         }
 
         $pass = Crypt::encryptString($request['password']);

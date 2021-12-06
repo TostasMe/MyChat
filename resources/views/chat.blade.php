@@ -297,7 +297,7 @@ a{
     <div class="chat_window">
         <div class="top_menu">
             <div class="title">
-              <span>Chat v1.2.0</span>
+              <span>Chat v1.2.1</span>
               <a href="#" class="main-item" tabindex="1"><img class="user-profile" src="{{Illuminate\Support\Facades\Auth::user()->image}}" width="40px" height="40px" alt="#"></a>
               <span class="user-name">{{Illuminate\Support\Facades\Auth::user()->name}}</span>
               <ul class="sub-menu">
