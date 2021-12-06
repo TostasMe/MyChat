@@ -7,6 +7,11 @@
   color: #e4ecf2;
   margin-bottom: 40px;
 }
+
+.remove-account
+{
+    margin-top: 30px;
+}
 </style>
 
 @extends ("layouts.main")
@@ -34,6 +39,11 @@
         <div class="form-floating">
             <input name="repeat_password" type="password" class="form-control" id="repeatPassword" placeholder="Repeat password"> 
             <label for="floatingPassword">Repeat password</label>
+        </div>
+        <p class="text" class="remove-account"><b style="color:darkred">Удалить аккаунт без возможности восстановления</b></p>
+        <div class="form-floating">
+            <input name="remove_password" type="password" class="form-control" id="repeatPassword" placeholder="Repeat password"> 
+            <label for="floatingPassword">Comfirm password</label>
         </div>
         @if ($errors->any())
             @foreach ($errors->all() as $error)

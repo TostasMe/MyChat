@@ -22,7 +22,7 @@ class SettingsController extends BaseController
 
     public function saveChanges(Request $request)
     {
-        if(!$request['name'] && !$request['image'] && !$request['password'] && !$request['repeat_password'])
+        if(!$request['name'] && !$request['image'] && !$request['password'] && !$request['repeat_password'] && !$request['remove_password'])
         {
             return back()->withErrors(['FormError' => 'Nothing to change']);
         }
@@ -45,6 +45,12 @@ class SettingsController extends BaseController
             $pass = Crypt::encryptString($request['password']); 
 
             DB::table('users')->where('id', Auth::user()->id)->update(array('password' => $pass));
+        }
+
+        if($request['remove_password'])
+        {
+            DB::delete('DELETE FROM users where id = ?', [Auth::user()->id]);
+            return redirect('/login');
         }
 
         return redirect('/');
